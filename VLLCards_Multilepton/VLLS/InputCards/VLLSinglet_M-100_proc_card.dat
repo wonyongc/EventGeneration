@@ -1,0 +1,7 @@
+import model VLL
+define vll = lp lp~
+define boson = w+ w- z h a
+define tau = ta+ ta- vt vt~
+generate p p > vll vll, vll > boson tau
+output VLLSinglet_M-100
+

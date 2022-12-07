@@ -1,0 +1,141 @@
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+c      written by the UFO converter
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+ckmblock 1 mdl_cabi
+
+isospin 1 mdl_Tl
+
+kappa 1 mdl_KLeLw
+
+kappa 2 mdl_KLmuLw
+
+kappa 3 mdl_KLtaLw
+
+kappa 4 mdl_KLeRw
+
+kappa 5 mdl_KLmuRw
+
+kappa 6 mdl_KLtaRw
+
+kappa 7 mdl_KLeRz
+
+kappa 8 mdl_KLeLz
+
+kappa 9 mdl_KLmuRz
+
+kappa 10 mdl_KLmuLz
+
+kappa 11 mdl_KLtaLz
+
+kappa 12 mdl_KLtaRz
+
+kappa 13 mdl_KLeLh
+
+kappa 14 mdl_KLeRh
+
+kappa 15 mdl_KLmuLh
+
+kappa 16 mdl_KLmuRh
+
+kappa 17 mdl_KLtaLh
+
+kappa 18 mdl_KLtaRh
+
+kappa 19 mdl_KVveLw
+
+kappa 20 mdl_KVvmLw
+
+kappa 21 mdl_KVvtLw
+
+kappa 22 mdl_KVveRw
+
+kappa 23 mdl_KVvmRw
+
+kappa 24 mdl_KVvtRw
+
+kappa 25 mdl_KVveLz
+
+kappa 26 mdl_KVvmLz
+
+kappa 27 mdl_KVvtLz
+
+kappa 28 mdl_KVveRz
+
+kappa 29 mdl_KVvmRz
+
+kappa 30 mdl_KVvtRz
+
+kappa 31 mdl_KVveLh
+
+kappa 32 mdl_KVvmLh
+
+kappa 33 mdl_KVvtLh
+
+kappa 34 mdl_KVveRh
+
+kappa 35 mdl_KVvmRh
+
+kappa 36 mdl_KVvtRh
+
+sminputs 1 aEWM1
+
+sminputs 2 mdl_Gf
+
+sminputs 3 aS
+
+yukawa 1 mdl_ymdo
+
+yukawa 2 mdl_ymup
+
+yukawa 3 mdl_yms
+
+yukawa 4 mdl_ymc
+
+yukawa 5 mdl_ymb
+
+yukawa 6 mdl_ymt
+
+yukawa 11 mdl_yme
+
+yukawa 13 mdl_ymm
+
+yukawa 15 mdl_ymtau
+
+mass 23 mdl_MZ
+
+mass 11 mdl_Me
+
+mass 13 mdl_MMU
+
+mass 15 mdl_MTA
+
+mass 2 mdl_MU
+
+mass 4 mdl_MC
+
+mass 6 mdl_MT
+
+mass 1 mdl_MD
+
+mass 3 mdl_MS
+
+mass 5 mdl_MB
+
+mass 17 mdl_MLP
+
+mass 18 mdl_MVLP
+
+mass 25 mdl_MH
+
+decay 23 mdl_WZ
+
+decay 24 mdl_WW
+
+decay 6 mdl_WT
+
+decay 17 mdl_WLP
+
+decay 18 mdl_WVLP
+
+decay 25 mdl_WH
