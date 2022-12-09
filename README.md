@@ -112,6 +112,7 @@ The important cards relevant to us are:
 - **run_card.dat:** Here you can change no of events you want to generate, place some cuts on objects, beam energy, PDF(Parton distribution functions) and phase space matching as well.  
 <br>
 Okay! Now again let's get back to action. Generate 500 events of Mass 100 GeV VLL Singlet Model.
+
 ```
 %EventGenerationCodeBlock
 >>>cd ..
@@ -141,6 +142,7 @@ INFO: Combining Events
 ```
 and the webbrowser tab looks like,
 <img src="./docs/image/AfterRunning.png" width="800">
+
 Now you can use the ```lhe.gz``` file and proceed with Pythia -->Delphes and so on. 
 
 ```
