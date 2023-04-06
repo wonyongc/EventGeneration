@@ -47,7 +47,24 @@ NB:
 
 1. Gridpack generation
 
+## LHEGS step
 
+For UL settings, do the following,
 
+```
+>>> export SCRAM_ARCH=slc7_amd64_gcc700
 
+>>> cmsrel CMSSW_10_6_30_patch1
+
+# Download fragment from McM
+>>> curl -s -k https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_fragment/EXO-RunIISummer20UL18wmLHEGEN-01288 --retry 3 --create-dirs -o Configuration/GenProduction/python/EXO-RunIISummer20UL18wmLHEGEN-01288-fragment.py
+
+>>> scram b
+
+>>>cmsDriver.py Configuration/GenProduction/python/EXO-RunIISummer20UL18wmLHEGEN-01288-fragment.py --python_filename EXO-RunIISummer20UL18wmLHEGEN-01288_1_cfg.py --eventcontent RAWSIM,LHE --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN,LHE --fileout file:EXO-RunIISummer20UL18wmLHEGEN-01288.root --conditions 106X_upgrade2018_realistic_v4 --beamspot Realistic25ns13TeVEarly2018Collision --step LHE,GEN --geometry DB:Extended --era Run2_2018 --no_exec --mc -n 10
+
+setup link:https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/EXO-RunIISummer20UL18wmLHEGEN-01288
+```
+
+##
 
