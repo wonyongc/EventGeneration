@@ -2,10 +2,15 @@ import os
 pjoin=os.path.join
 
 
-flavor= "ele" #options are: ele/mu/tau
+flavor= "tau" #options are: ele/mu/tau
 sigmodel = 'doublet' #options are: singlet/doublet
 
+VLLMass=[1400,1600,1800,2000,2200] #for singlet
+#VLLMass=[100] #for doublet
 
+
+
+##########################   USER DON'T NEED TO MODIFY AFTER THIS ###################################
 #Initialize
 if(sigmodel == 'doublet'):
     model = 'VLLD'
@@ -21,10 +26,6 @@ proc_card       = f"{model}_{flavor}_M100_proc_card.dat"
 run_card        = f"{model}_{flavor}_M100_run_card.dat"
 
 #######################################################
-
-#VLLMass=[100,125,150,200,250,300,350,400,500,600,700,800] #for singlet
-VLLMass=[100,200] #for doublet
-
 for mass in VLLMass:
     card_dir=f"{model}_{flavor}_M{mass}"
     os.system(f"mkdir {card_dir}")
@@ -56,3 +57,12 @@ for mass in VLLMass:
 
     proc_card_sed = f"sed -i 's/100/{mass}/g' {card_dir}/{model}_{flavor}_M{mass}_proc_card.dat"
     os.system(proc_card_sed)
+
+
+    #  move the folder in correct place
+    #  for singlet: cards/singlet/ele or cards/singlet/mu
+    #  for doublet: cards/singlet/ele or cards/singlet/mu
+    
+    move_cmd= f"mv {card_dir} cards/{sigmodel}/{flavor}/"
+    os.system(move_cmd)
+    

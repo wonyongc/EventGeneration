@@ -1,0 +1,9 @@
+import model VLL
+define tp = lp lp~
+define vtp = vlp vlp~
+define boson = w+ w- z h
+define tau = ta+ ta- vt vt~
+generate p p > tp tp, (tp > boson tau)
+add process p p > vtp vtp, (vtp > boson tau)
+add process p p > tp vtp, (tp > boson tau), (vtp > boson tau)
+output VLLD_tau_M1400 -nojpeg

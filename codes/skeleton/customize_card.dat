@@ -1,3 +1,0 @@
-set param_card mass 17 100 #mlp
-set param_card mass 18 100 #mvlp
-set param_card tl 0        #tl
