@@ -6,4 +6,4 @@ define muon = mu+ mu- vm vm~
 generate p p > tp tp, (tp > boson muon)
 add process p p > vtp vtp, (vtp > boson muon)
 add process p p > tp vtp, (tp > boson muon), (vtp > boson muon)
-output VLLD_mu_M100 -nojpeg
+output VLLD_mu_M100_D200 -nojpeg

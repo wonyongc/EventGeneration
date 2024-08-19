@@ -6,4 +6,4 @@ define ele = e+ e- ve ve~
 generate p p > tp tp, (tp > boson ele)
 add process p p > vtp vtp, (vtp > boson ele)
 add process p p > tp vtp, (tp > boson ele), (vtp > boson ele)
-output VLLD_ele_M100 -nojpeg
+output VLLD_ele_M100_D200 -nojpeg

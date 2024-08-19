@@ -1,3 +1,5 @@
 set param_card mass 17 100
 set param_card mass 18 100
+set param_card decay 17 200
+set param_card decay 18 200
 set param_card isospin 1 -0.5

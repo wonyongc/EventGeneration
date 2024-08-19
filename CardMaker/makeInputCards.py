@@ -1,68 +1,43 @@
 import os
 pjoin=os.path.join
 
+sigmodel = 'singlet'
+flavors= ['ele', 'muon']
 
-flavor= "tau" #options are: ele/mu/tau
-sigmodel = 'doublet' #options are: singlet/doublet
+VLLMass=[450,600,750,900]
+VLLDecay=[1e-13,1e-14,1e-15,1e-16]
 
-VLLMass=[1400,1600,1800,2000,2200] #for singlet
-#VLLMass=[100] #for doublet
+model = 'VLLS' if sigmodel == 'singlet' else 'VLLD'
+templates = 'templates'
 
+##template cards
+extramodels     = 'VLLS_extramodels.dat'
+run_card        = 'VLLS_run_card.dat'
+customize_card  = 'VLLS_customizecards.dat'
+proc_card       = 'VLLS_proc_card.dat'
 
+for flavor in flavors:
+    for mass in VLLMass:
+        for decay in VLLDecay:
 
-##########################   USER DON'T NEED TO MODIFY AFTER THIS ###################################
-#Initialize
-if(sigmodel == 'doublet'):
-    model = 'VLLD'
-    inputdir='skeleton/doublet'
-else:
-    model = 'VLLS'
-    inputdir='skeleton/singlet'
+            massstr  = f'M{mass}'
+            decaystr = f'D{decay}'
 
-##skeleton cards
-extramodel_card = f"{model}_{flavor}_M100_extramodels.dat"
-customize_card  = f"{model}_{flavor}_M100_customizecards.dat"
-proc_card       = f"{model}_{flavor}_M100_proc_card.dat"
-run_card        = f"{model}_{flavor}_M100_run_card.dat"
+            prefix   = '_'.join([model, flavor, massstr, decaystr])
 
-#######################################################
-for mass in VLLMass:
-    card_dir=f"{model}_{flavor}_M{mass}"
-    os.system(f"mkdir {card_dir}")
-    
-    #copy skeleton cards
-    os.system(f"cp {inputdir}/{extramodel_card} {card_dir}/")
-    os.system(f"cp {inputdir}/{customize_card} {card_dir}/")
-    os.system(f"cp {inputdir}/{proc_card} {card_dir}/")
-    os.system(f"cp {inputdir}/{run_card} {card_dir}/")
+            os.system(f"mkdir {prefix}")
 
-    #change name according to mass
-    cardlist = os.listdir(card_dir)
-    for f in cardlist:
-        tag=f.split(f'{model}_{flavor}_M100_')[1]
+            #copy template cards
+            os.system(f'cp {templates}/{extramodels}    {prefix}/{prefix}_extramodels.dat')
+            os.system(f'cp {templates}/{run_card}       {prefix}/{prefix}_run_card.dat')
+            os.system(f'cp {templates}/{customize_card} {prefix}/{prefix}_customizecards.dat')
+            os.system(f'cp {templates}/{proc_card}      {prefix}/{prefix}_proc_card.dat')
 
-        newname = f"{model}_{flavor}_M{mass}_{tag}"
+            ## change content using sed
+            os.system(f"sed -i 's/massholder/{mass}/g'   {prefix}/{prefix}_customizecards.dat")
+            os.system(f"sed -i 's/decayholder/{decay}/g' {prefix}/{prefix}_customizecards.dat")
+            os.system(f"sed -i 's/flavorholder/{flavor}/g'     {prefix}/{prefix}_proc_card.dat")
+            os.system(f"sed -i 's/prefixholder/{prefix}/g'     {prefix}/{prefix}_proc_card.dat")
 
-        os.system(f"mv {card_dir}/{f} {card_dir}/{newname}")
-
-    ##show on terminal
-    print(f"\nInput cards in {card_dir} after renaming...")
-    print(os.listdir(card_dir))
-
-
-    ## change content using sed
-
-    customize_card_sed = f"sed -i 's/100/{mass}/g' {card_dir}/{model}_{flavor}_M{mass}_customizecards.dat"
-    os.system(customize_card_sed)
-
-    proc_card_sed = f"sed -i 's/100/{mass}/g' {card_dir}/{model}_{flavor}_M{mass}_proc_card.dat"
-    os.system(proc_card_sed)
-
-
-    #  move the folder in correct place
-    #  for singlet: cards/singlet/ele or cards/singlet/mu
-    #  for doublet: cards/singlet/ele or cards/singlet/mu
-    
-    move_cmd= f"mv {card_dir} cards/{sigmodel}/{flavor}/"
-    os.system(move_cmd)
-    
+            print(f"\nCreated cards in {prefix}:")
+            print(os.listdir(prefix))
